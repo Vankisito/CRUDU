@@ -1,11 +1,6 @@
 <?php 
-   $db = new PDO('mysql:host=localhost;dbname=ejecrud1', 'root', '');
-
-   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
+    include 'services.php';
     $clientes= $db->query("SELECT * FROM data_personas")->fetchAll();
-
 ?>
 
 
@@ -23,7 +18,7 @@
         <div class="jumbotron">
             <h1>Tabla clientes</h1>
         </div>
-        <table class="table-secondary"> 
+        <table class="table table-secondary"> 
             <thead>
                 <tr>
                     <th>ID</th>
@@ -39,7 +34,7 @@
                     <td><?php echo $cliente->nombre?></td>
                     <td><?php echo $cliente->apellido?></td>
                     <td><?php echo $cliente->correo_electronico?></td>
-                    <td><a href="eliminar.php?id=<?php echo $cliente->id?>">Eliminar </a></td>
+                    <td><a href="controller.php?id=<?php echo $cliente->id?>&operation=eliminarCliente">Eliminar </a></td>
                     <td><a href="actualizar.php?id=<?php echo $cliente->id?>">Actualizar </a></td>
                 </tr>
             <?php endforeach; ?>      
